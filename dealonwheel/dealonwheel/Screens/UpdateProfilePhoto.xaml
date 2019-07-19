@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:controls="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.ImageCropView"
+             x:Class="dealonwheel.Screens.UpdateProfilePhoto"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Content>
+
+        <Grid BackgroundColor="White" RowSpacing="0" ColumnSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="102" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness" iOS="50, 0, 50, 20" Android="50, 0, 50, 20"  />
+            </Grid.Padding>
+            <Label x:Name="textProfilePic" BackgroundColor="Transparent" Text="Update Profile Photo" FontSize="Large" TextColor="Black" Grid.Row="0" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            <abstractions:CircleImage x:Name="ProfilePicDefault" IsVisible="True" Opacity="0.5" Grid.Row="0" Grid.Column="0" Aspect="Fill" HeightRequest="300" WidthRequest="300" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+            <controls:ImageCropView x:Name="ProfilePicCroppable" IsVisible="False" Opacity="0.5" Grid.Row="0" Grid.Column="0" Aspect="Fill" HeightRequest="300" WidthRequest="300" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
+                <controls:ImageCropView.PreviewTransformations>
+                    <transformations:CircleTransformation />
+                </controls:ImageCropView.PreviewTransformations>
+            </controls:ImageCropView>
+            <StackLayout BackgroundColor="Transparent" Orientation="Vertical" Spacing="0" Grid.Row="1" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Button BackgroundColor="Transparent" Text="Take Photo" TextColor="Black" BorderWidth="2" BorderColor="#7f7f7f" CornerRadius="20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="TakePhoto_Clicked"/>
+                <BoxView HeightRequest="2" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
+                <Button BackgroundColor="Transparent" Text="Choose Existing" TextColor="Black" BorderWidth="2" BorderColor="#7f7f7f" CornerRadius="20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="ChooseExisting_Clicked"/>
+            </StackLayout>
+            <StackLayout BackgroundColor="Transparent" Orientation="Horizontal" Spacing="0" Grid.Row="3" Grid.Column="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Button x:Name="CancelButton" IsVisible="True" BackgroundColor="Transparent" Text="Cancel" TextColor="Black" BorderWidth="2" BorderColor="#7f7f7f" CornerRadius="20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="Cancel_Clicked"/>
+                <Button x:Name="SaveButton" IsVisible="False" BackgroundColor="Transparent" Text="Save" TextColor="Black" BorderWidth="2" BorderColor="#7f7f7f" CornerRadius="20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Clicked="Save_Clicked"/>
+            </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

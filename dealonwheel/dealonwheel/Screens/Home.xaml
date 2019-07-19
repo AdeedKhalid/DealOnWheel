@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             x:Class="dealonwheel.Screens.Home"
+             Title="">
+
+    <ContentPage.Content>
+        <Grid RowSpacing="0" ColumnSpacing="0" BackgroundColor="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="10" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="30" />
+            </Grid.RowDefinitions>
+            <maps:Map x:Name="MyMap" PropertyChanged="MyMap_PropertyChanged" PropertyChanging="MyMap_PropertyChanging" CameraMoveStarted="MyMap_CameraMoveStarted" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Grid.RowSpan="5" Grid.Column="0" Grid.ColumnSpan="5" />
+            <ImageButton x:Name="btn_SetRotation" IsVisible="False" Source="icon_setrotation.png" BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="3" Clicked="SetRotation_Clicked" />
+            <Button x:Name="btn_MoveToCurrentLocation" IsVisible="False" ImageSource="icon_usercurrentlocation.png" CornerRadius="10" BorderWidth="1" BorderColor="Black" BackgroundColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="3" Grid.Column="3" Clicked="MoveToCurrentLocation_Clicked"/>
+            <Button x:Name="btn_Search" ImageSource="icon_search.png" CornerRadius="10" BorderWidth="1" BorderColor="Black" BackgroundColor="#5b9bd5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1" Clicked="Search_Clicked"/>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

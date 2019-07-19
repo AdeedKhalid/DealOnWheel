@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:dealonwheel.Controls"
+             x:Class="dealonwheel.Screens.SignUp"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="Button">
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="FontFamily" Value="Ariel"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView Orientation="Vertical">
+            <local:GradientGrid StartColor="#4baeb3" EndColor="#9798e8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="0.1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <StackLayout.Margin>
+                        <OnPlatform x:TypeArguments="Thickness" iOS="0, 0, 0, 40" Android="0, 0, 0, 40"  />
+                    </StackLayout.Margin>
+
+                    <Image Source="logo_splash.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" HorizontalOptions="CenterAndExpand" />
+
+                    <BoxView HeightRequest="60" BackgroundColor="Transparent" />
+
+                    <Frame BorderColor="Black" BackgroundColor="Transparent" HasShadow="False" Padding="5" CornerRadius="0">
+                        <StackLayout Orientation="Horizontal" >
+                            <StackLayout.Margin>
+                                <OnPlatform x:TypeArguments="Thickness" iOS="10, 0, 5, 0" Android="10, 0, 5, 0"  />
+                            </StackLayout.Margin>
+                            <Image Source="icon_user.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="Start" VerticalOptions="FillAndExpand"/>
+                            <BoxView WidthRequest="5" BackgroundColor="Transparent" />
+                            <local:MyEntry x:Name="signup_username" IsTextPredictionEnabled="False" ReturnType="Next" Keyboard="Text" MaxLength="35" FontSize="Small" Placeholder="Username" PlaceholderColor="White" TextColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <BoxView HeightRequest="5" BackgroundColor="Transparent" />
+
+                    <Frame BorderColor="Black" BackgroundColor="Transparent" HasShadow="False" Padding="5" CornerRadius="0">
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout.Margin>
+                                <OnPlatform x:TypeArguments="Thickness" iOS="10, 0, 5, 0" Android="10, 0, 5, 0"  />
+                            </StackLayout.Margin>
+                            <Image Source="icon_email.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="Start" VerticalOptions="FillAndExpand"/>
+                            <BoxView WidthRequest="5" BackgroundColor="Transparent" />
+                            <local:MyEntry x:Name="signup_email" IsTextPredictionEnabled="False" ReturnType="Next" Keyboard="Email" MaxLength="35" FontSize="Small" Placeholder="Email" PlaceholderColor="White" TextColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <BoxView HeightRequest="5" BackgroundColor="Transparent" />
+
+                    <Frame BorderColor="Black" BackgroundColor="Transparent" HasShadow="False" Padding="5" CornerRadius="0">
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout.Margin>
+                                <OnPlatform x:TypeArguments="Thickness" iOS="10, 0, 5, 0" Android="10, 0, 5, 0"  />
+                            </StackLayout.Margin>
+                            <Image Source="icon_password.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="Start" VerticalOptions="FillAndExpand"/>
+                            <BoxView WidthRequest="5" BackgroundColor="Transparent" />
+                            <local:MyEntry x:Name="signup_password" BackgroundColor="Transparent" IsPassword="true" MaxLength="35" FontSize="Small" Placeholder="Password" PlaceholderColor="White" TextColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                <Entry.Effects>
+                                    <local:ShowHidePassEffect />
+                                </Entry.Effects>
+                            </local:MyEntry>
+                        </StackLayout>
+                    </Frame>
+
+                    <BoxView HeightRequest="5" BackgroundColor="Transparent" />
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.Margin>
+                            <OnPlatform x:TypeArguments="Thickness" iOS="10, 0, 10, 0" Android="10, 0, 10, 0"  />
+                        </StackLayout.Margin>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="GenderTapped" NumberOfTapsRequired="1" />
+                        </StackLayout.GestureRecognizers>
+                        <Label Text="Identify as: " FontSize="Small" TextColor="White" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        <Label x:Name="signup_gender" Text="Please Specify..." FontSize="Small" TextColor="White" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        <BoxView WidthRequest="5" BackgroundColor="Transparent" />
+                        <Image Source="icon_dropdownarrow_white.png" HeightRequest="15" WidthRequest="15" HorizontalOptions="Start" VerticalOptions="FillAndExpand"/>
+                    </StackLayout>
+
+                    <BoxView HeightRequest="15" BackgroundColor="Transparent" />
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.Margin>
+                            <OnPlatform x:TypeArguments="Thickness" iOS="10, 0, 10, 0" Android="10, 0, 10, 0"  />
+                        </StackLayout.Margin>
+                        <Switch x:Name="promotionCodeSwitch" IsToggled="False" Toggled="PromotionCodeSwitch_Toggled" />
+                        <Label Text="Promotional Code    " FontSize="Small" TextColor="White" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                        <local:MyEntry x:Name="lbl_promotioncode" IsVisible="False" IsTextPredictionEnabled="False" ReturnType="Next" Keyboard="Text" MaxLength="35" FontSize="Small" Placeholder="Code Here..." PlaceholderColor="LightGray" TextColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" />
+                    </StackLayout>
+
+                    <BoxView HeightRequest="15" BackgroundColor="Transparent" />
+
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout.Margin>
+                            <OnPlatform x:TypeArguments="Thickness" iOS="10, 0, 10, 0" Android="10, 0, 10, 0"  />
+                        </StackLayout.Margin>
+                        <Switch x:Name="termsAgreement" IsToggled="False" />
+                        <Label Text="I have read and accept&#x0a;the terms and&#x0a;agreements" FontSize="Small" TextColor="White" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" />
+                    </StackLayout>
+
+                    <BoxView HeightRequest="15" BackgroundColor="Transparent" />
+
+                    <Frame BorderColor="Transparent" BackgroundColor="Transparent" HasShadow="False" CornerRadius="0" Padding="0">
+                        <StackLayout Orientation="Vertical">
+                            <StackLayout.Margin>
+                                <OnPlatform x:TypeArguments="Thickness" iOS="50, 0, 50, 0" Android="50, 0, 50, 0"  />
+                            </StackLayout.Margin>
+                            <BoxView HeightRequest="2" BackgroundColor="Black" HorizontalOptions="FillAndExpand" />
+                            <Button x:Name="signup_btn" Style="{StaticResource ButtonStyle}" Text="Sign Up!" Clicked="signup_btn_Clicked"/>
+                        </StackLayout>
+                    </Frame>
+
+                    <BoxView HeightRequest="15" BackgroundColor="Transparent" />
+
+                    <Label Text="Already have an account?" FontSize="Small" TextColor="White" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+                    <Label Text="Sign In" FontSize="Small" TextColor="White" FontAttributes="Bold" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SignInTapped" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+
+            </local:GradientGrid>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.companyname.dealonwheel" android:installLocation="auto">
+	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="27" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.CAMERA" />
+	<application android:label="Deal On Wheel" android:icon="@mipmap/icon">
+		<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAvoU1_MAgmcocL21R-Roi1Bxr916h3D0A" />
+    <provider android:name="android.support.v4.content.FileProvider" android:authorities="com.companyname.dealonwheel.fileprovider" android:grantUriPermissions="true" android:exported="false">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+		</provider>	
+</application>
+</manifest>
